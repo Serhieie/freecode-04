@@ -9,7 +9,7 @@ export const App: React.FC = () => {
   const [digitLimitMessage, setDigitLimitMessage] = useState<string | null>(null);
 
   useEffect(() => {
-    if (currentOperand && currentOperand.toString().length > 15) {
+    if (currentOperand && currentOperand.toString().length > 14) {
       setDigitLimitMessage("Digit limit met");
       const timer = setTimeout(() => {
         setDigitLimitMessage(null);

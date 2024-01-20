@@ -8,7 +8,7 @@ export function reducer(state, { type, payload }) {
         return { ...state, currentOperand: payload.digit, overwrite: false };
       }
       const currentOperand = state.currentOperand || "";
-      if (currentOperand.length > 15) return state;
+      if (currentOperand.length > 14) return state;
       if (payload.digit === "0" && currentOperand === "0") return state;
       if (
         (payload.digit === "0" && !currentOperand) ||
