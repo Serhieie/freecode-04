@@ -1,5 +1,13 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
+  min-height: 88vh;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.99), rgb(55, 92, 155));
   font-family: "Electrolize", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -7,4 +15,81 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.calc-grid {
+  background-color: black;
+  width: 25rem;
+  display: grid;
+  grid-template-columns: repeat(4, 6rem);
+  grid-template-rows: repeat(6, 5.5rem);
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 6rem;
+  padding: 8px;
+
+  border-radius: 4px;
+}
+
+.calc-grid > button {
+  cursor: pointer;
+  font-size: 2rem;
+
+  display: flex;
+  outline: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #3d4247;
+  box-shadow: inset 1px 1px 12px #232629;
+  border-radius: 2px;
+  color: rgba(255, 255, 255, 0.6);
+
+  transition: all 300ms ease-in-out;
+}
+
+.calc-grid > button:hover,
+.calc-grid > button:focus {
+  opacity: 0.9;
+}
+
+.output {
+  grid-column: 1 / -1;
+  grid-row: span 1;
+  background-color: rgba(255, 255, 255, 0.15);
+
+  padding: 0.75rem;
+  margin-bottom: 4px;
+
+  font-family: "Iceland", sans-serif;
+
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.output .prev-operand {
+  color: rgb(254, 208, 123);
+  font-size: 1.5rem;
+}
+
+.output .curr-operand {
+  color: rgb(255, 187, 60);
+  font-size: 2.5rem;
+}
+
+.span-two.first-item {
+  grid-column: span 2;
+  background-color: rgb(249, 74, 74);
+}
+
+.span-two.last-item {
+  grid-column: span 2;
+  background-color: rgb(55, 92, 155);
 }
