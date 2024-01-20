@@ -9,6 +9,14 @@ export function reducer(state, { type, payload }) {
       }
       const currentOperand = state.currentOperand || "";
       if (payload.digit === "0" && currentOperand === "0") return state;
+      if (
+        (payload.digit === "0" && !currentOperand) ||
+        (payload.digit === "0" && currentOperand === 0)
+      )
+        return {
+          ...state,
+          currentOperand: 0,
+        };
       if (payload.digit === "." && currentOperand.includes(".")) return state;
       if (payload.digit === "." && !currentOperand) {
         return {
@@ -96,11 +104,11 @@ export function reducer(state, { type, payload }) {
         return {
           ...state,
           overwrite: false,
-          currentOperand: null,
+          currentOperand: 0,
         };
       }
-      if (state.currentOperand == null) return state;
-      if (state.currentOperand.length === 1) {
+      const currentOperand3 = String(state.currentOperand || 0);
+      if (currentOperand3.length === 1) {
         return {
           ...state,
           currentOperand: 0,
@@ -108,8 +116,9 @@ export function reducer(state, { type, payload }) {
       }
       return {
         ...state,
-        currentOperand: state.currentOperand.slice(0, -1),
+        currentOperand: currentOperand3.slice(0, -1),
       };
+
     default:
       return;
   }
