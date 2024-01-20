@@ -23,8 +23,16 @@ export function reducer(state, { type, payload }) {
     case ACTIONS.CLEAR:
       return {};
     case ACTIONS.CHOOSE_OPERATION:
-      const currentOperan = state.currentOperand || "";
-      if (payload.operation === "-" && !currentOperan && state.previousOperand == null) {
+      const currentOperand2 = state.currentOperand || "";
+      if (typeof currentOperand2 === "string" && currentOperand2.endsWith(".")) {
+        return state;
+      }
+      if (payload.operation === "-" && state.currentOperand === "-") return state;
+      if (
+        payload.operation === "-" &&
+        !currentOperand2 &&
+        state.previousOperand == null
+      ) {
         return {
           ...state,
           operation: null,
