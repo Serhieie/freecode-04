@@ -23,14 +23,28 @@ export function reducer(state, { type, payload }) {
     case ACTIONS.CLEAR:
       return {};
     case ACTIONS.CHOOSE_OPERATION:
+      const currentOperan = state.currentOperand || "";
+      if (payload.operation === "-" && !currentOperan && state.previousOperand == null) {
+        return {
+          ...state,
+          operation: null,
+          currentOperand: payload.operation,
+        };
+      }
       if (state.currentOperand == null && state.previousOperand == null) return state;
+
       if (
-        (state.operation === "+" && state.currentOperand == null) ||
-        (state.operation === "×" && state.currentOperand == null)
+        (state.operation === "+" &&
+          state.currentOperand == null &&
+          payload.operation === "-") ||
+        (state.operation === "×" &&
+          state.currentOperand == null &&
+          payload.operation === "-")
       ) {
         return {
           ...state,
-          operation: state.operation + payload.operation,
+          previousOperand: state.previousOperand,
+          operation: `${state.operation}${payload.operation}`,
           secondOperator: payload.operation,
         };
       }
