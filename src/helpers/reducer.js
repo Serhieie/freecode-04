@@ -11,6 +11,12 @@ export function reducer(state, { type, payload }) {
       if (currentOperand.length > 14) return state;
       if (payload.digit === "0" && currentOperand === "0") return state;
       if (
+        (state.currentOperand === "-" && payload.digit === ".") ||
+        (state.currentOperand === "-" && payload.digit === "0")
+      ) {
+        return state;
+      }
+      if (
         (payload.digit === "0" && !currentOperand) ||
         (payload.digit === "0" && currentOperand === 0)
       )
@@ -36,7 +42,10 @@ export function reducer(state, { type, payload }) {
       if (typeof currentOperand2 === "string" && currentOperand2.endsWith(".")) {
         return state;
       }
-      if (payload.operation === "-" && state.currentOperand === "-") return state;
+      if (state.currentOperand === "-" && isNaN(payload.value)) {
+        return state;
+      }
+
       if (
         payload.operation === "-" &&
         !currentOperand2 &&
