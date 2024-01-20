@@ -1,3 +1,5 @@
+import { formatNumber } from "./formatNumber";
+
 export function evaluate({
   currentOperand,
   previousOperand,
@@ -47,9 +49,7 @@ export function evaluate({
       return "";
   }
 
-  if (compitation.toString().length > 8 && compitation) {
-    return Number(compitation).toFixed(8);
-  }
+  const numToReturn = formatNumber(compitation);
 
-  return compitation;
+  return numToReturn;
 }

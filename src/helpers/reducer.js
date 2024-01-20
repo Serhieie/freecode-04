@@ -8,6 +8,7 @@ export function reducer(state, { type, payload }) {
         return { ...state, currentOperand: payload.digit, overwrite: false };
       }
       const currentOperand = state.currentOperand || "";
+      if (currentOperand.length > 15) return state;
       if (payload.digit === "0" && currentOperand === "0") return state;
       if (
         (payload.digit === "0" && !currentOperand) ||
@@ -98,6 +99,7 @@ export function reducer(state, { type, payload }) {
         previousOperand: null,
         operation: null,
         currentOperand: evaluate(state),
+        result: evaluate(state),
       };
     case ACTIONS.DELETE_DIG:
       if (state.overwrite) {
