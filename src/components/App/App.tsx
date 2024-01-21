@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, useState } from "react";
+import React, { useReducer } from "react";
 import Display from "../Display/Display";
 import Buttons from "../Buttons/Buttons";
 import { reducer } from "../../helpers/reducer";
@@ -8,8 +8,7 @@ export const App: React.FC = () => {
     useReducer(reducer, {});
 
   return (
-    <>
-      {" "}
+    <div className="overflow">
       <div className="glass-block-main"></div>
       <div className="glass-block-main2"></div>
       <div className="calc-grid">
@@ -21,6 +20,6 @@ export const App: React.FC = () => {
         />
         <Buttons dispatch={dispatch} />
       </div>
-    </>
+    </div>
   );
 };
