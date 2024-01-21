@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/freecode-04/static/css/main.0341ba8c.css",
-    "main.js": "/freecode-04/static/js/main.2fa7dadb.js",
+    "main.css": "/freecode-04/static/css/main.855ff5aa.css",
+    "main.js": "/freecode-04/static/js/main.cfc9d7a7.js",
     "index.html": "/freecode-04/index.html",
-    "main.0341ba8c.css.map": "/freecode-04/static/css/main.0341ba8c.css.map",
-    "main.2fa7dadb.js.map": "/freecode-04/static/js/main.2fa7dadb.js.map"
+    "main.855ff5aa.css.map": "/freecode-04/static/css/main.855ff5aa.css.map",
+    "main.cfc9d7a7.js.map": "/freecode-04/static/js/main.cfc9d7a7.js.map"
   },
   "entrypoints": [
-    "static/css/main.0341ba8c.css",
-    "static/js/main.2fa7dadb.js"
+    "static/css/main.855ff5aa.css",
+    "static/js/main.cfc9d7a7.js"
   ]
 }
