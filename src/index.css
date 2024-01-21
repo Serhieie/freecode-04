@@ -111,12 +111,12 @@ code {
 
 .span-two.first-item {
   grid-column: span 2;
-  background-color: rgb(249, 74, 74);
+  background-color: rgb(129, 42, 42);
 }
 
 .span-two.last-item {
   grid-column: span 2;
-  background-color: rgb(55, 92, 155);
+  background-color: rgb(31, 57, 101);
 }
 
 @media screen and (min-width: 500px) {
