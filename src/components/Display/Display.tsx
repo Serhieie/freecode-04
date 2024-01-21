@@ -1,4 +1,4 @@
-import React from "react";
+import { DisplayWrapper } from "./Display.styled";
 
 interface DisplayProps {
   previousOperand: string;
@@ -14,7 +14,7 @@ const Display: React.FC<DisplayProps> = ({
   result,
 }) => {
   return (
-    <div id="display" className="output calculator-glass">
+    <DisplayWrapper id="display" className="output calculator-glass">
       <div className="glass-block1"></div>
       <div className="glass-block2"></div>
       <div className="glass-block3"></div>
@@ -31,7 +31,7 @@ const Display: React.FC<DisplayProps> = ({
       ) : (
         <div className="curr-operand">{result}</div>
       )}
-    </div>
+    </DisplayWrapper>
   );
 };
 

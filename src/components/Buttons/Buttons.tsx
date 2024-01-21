@@ -1,6 +1,6 @@
 import React from "react";
-import DigitButton from "../../helpers/DigitButton";
-import OperationDigit from "../../helpers/OperationDigit";
+import DigitButton from "./DigitButton/DigitButton";
+import OperationDigit from "./OperationButton/OperationDigit";
 import { ACTIONS } from "../../constants/actions";
 
 interface ButtonsProps {
