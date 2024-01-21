@@ -5,7 +5,20 @@ export function reducer(state, { type, payload }) {
   switch (type) {
     case ACTIONS.ADD_DIGIT:
       if (state.overwrite) {
-        return { ...state, currentOperand: payload.digit, overwrite: false };
+        if (payload.digit === ".") {
+          return {
+            ...state,
+            result: null,
+            currentOperand: "0.",
+            overwrite: false,
+          };
+        }
+        return {
+          ...state,
+          result: null,
+          currentOperand: payload.digit,
+          overwrite: false,
+        };
       }
       const currentOperand = state.currentOperand || "";
       if (currentOperand.length > 14) return state;
@@ -38,6 +51,16 @@ export function reducer(state, { type, payload }) {
     case ACTIONS.CLEAR:
       return {};
     case ACTIONS.CHOOSE_OPERATION:
+      if (state.overwrite) {
+        return {
+          ...state,
+          previousOperand: state.result,
+          result: null,
+          operation: payload.operation,
+          currentOperand: 0,
+          overwrite: false,
+        };
+      }
       const currentOperand2 = state.currentOperand || "";
       if (typeof currentOperand2 === "string" && currentOperand2.endsWith(".")) {
         return state;
@@ -111,9 +134,19 @@ export function reducer(state, { type, payload }) {
         result: evaluate(state),
       };
     case ACTIONS.DELETE_DIG:
+      const result = String(state.result || null);
       if (state.overwrite) {
+        if (result) {
+          return {
+            ...state,
+            result: null,
+            overwrite: false,
+            currentOperand: result.slice(0, -1),
+          };
+        }
         return {
           ...state,
+          result: null,
           overwrite: false,
           currentOperand: 0,
         };
