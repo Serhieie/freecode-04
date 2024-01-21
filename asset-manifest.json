@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/freecode-04/static/css/main.4309964c.css",
+    "main.css": "/freecode-04/static/css/main.0341ba8c.css",
     "main.js": "/freecode-04/static/js/main.2fa7dadb.js",
     "index.html": "/freecode-04/index.html",
-    "main.4309964c.css.map": "/freecode-04/static/css/main.4309964c.css.map",
+    "main.0341ba8c.css.map": "/freecode-04/static/css/main.0341ba8c.css.map",
     "main.2fa7dadb.js.map": "/freecode-04/static/js/main.2fa7dadb.js.map"
   },
   "entrypoints": [
-    "static/css/main.4309964c.css",
+    "static/css/main.0341ba8c.css",
     "static/js/main.2fa7dadb.js"
   ]
 }
