@@ -50,8 +50,25 @@ export function reducer(state, { type, payload }) {
       };
     case ACTIONS.CLEAR:
       return {};
+
     case ACTIONS.CHOOSE_OPERATION:
+      const sqrtResult = evaluate({
+        currentOperand: state.currentOperand,
+        previousOperand: null,
+        operation: payload.operation,
+        secondOperator: false,
+      });
       if (state.overwrite) {
+        if (payload.operation === "√") {
+          return {
+            ...state,
+            previousOperand: null,
+            result: sqrtResult,
+            operation: null,
+            currentOperand: sqrtResult,
+            overwrite: true,
+          };
+        }
         return {
           ...state,
           previousOperand: state.result,
@@ -59,6 +76,34 @@ export function reducer(state, { type, payload }) {
           operation: payload.operation,
           currentOperand: 0,
           overwrite: false,
+        };
+      }
+      if (payload.operation === "√" && state.operation) {
+        if (state.currentOperand) {
+          return {
+            ...state,
+            previousOperand: state.previousOperand,
+            result: null,
+            operation: state.operation,
+            currentOperand: sqrtResult,
+            overwrite: false,
+          };
+        }
+        return state;
+      }
+
+      if (payload.operation === "√" && !state.operation) {
+        return {
+          ...state,
+          previousOperand: state.previousOperand,
+          result: null,
+          operation: state.operation,
+          currentOperand: evaluate({
+            currentOperand: state.currentOperand,
+            previousOperand: null,
+            operation: payload.operation,
+            secondOperator: false,
+          }),
         };
       }
       const currentOperand2 = state.currentOperand || "";
@@ -148,10 +193,16 @@ export function reducer(state, { type, payload }) {
           ...state,
           result: null,
           overwrite: false,
-          currentOperand: 0,
+          currentOperand: null,
         };
       }
       const currentOperand3 = String(state.currentOperand || 0);
+      if (currentOperand3.length === 2 && currentOperand3.includes(".")) {
+        return {
+          ...state,
+          currentOperand: 0,
+        };
+      }
       if (currentOperand3.length === 1) {
         return {
           ...state,

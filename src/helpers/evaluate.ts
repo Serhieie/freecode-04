@@ -15,15 +15,26 @@ export function evaluate({
   const curr = parseFloat(currentOperand);
   let trueOp = operation;
 
-  if (operation.length > 1) {
-    trueOp = trueOp.slice(0, 1);
-  }
-
-  if (isNaN(prev) || isNaN(curr)) return "";
+  if (isNaN(curr)) return "";
 
   let compitation: string | number = "";
 
+  if (operation) {
+    if (operation.length > 1) {
+      trueOp = trueOp.slice(0, 1);
+    }
+  }
+
   switch (trueOp) {
+    case "^":
+      compitation = Math.pow(prev, curr);
+      break;
+    case "%":
+      compitation = (curr / 100) * prev;
+      break;
+    case "√":
+      compitation = Math.sqrt(curr);
+      break;
     case "×":
       compitation = prev * curr;
       if (secondOperator) {
@@ -40,9 +51,6 @@ export function evaluate({
       compitation = prev + curr;
       break;
     case "-":
-      if (secondOperator) {
-        console.log(true);
-      }
       compitation = prev - curr;
       break;
     default:
