@@ -1,6 +1,6 @@
 // reducer.ts
 import { ACTIONS } from "../constants/actions";
-import { handleChooseOperation } from "./actionHandlers/actionHandlers";
+import { handleChooseOperation } from "./actionHandlers/handleChooseOperation";
 import { handleAddDigit } from "./actionHandlers/handleAddDigit";
 import { handleClear } from "./actionHandlers/handleClear";
 import { handleEvaluate } from "./actionHandlers/handleEvaluate";

@@ -45,10 +45,10 @@ export function evaluate({
       compitation = prev / curr;
       break;
     case "+":
+      compitation = prev + curr;
       if (secondOperator) {
         compitation = prev + -curr;
       }
-      compitation = prev + curr;
       break;
     case "-":
       compitation = prev - curr;
