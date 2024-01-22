@@ -1,5 +1,6 @@
 import React from "react";
 import { ACTIONS } from "../../../constants/actions";
+import { StyledButtons } from "../Buttons.styled";
 
 interface DigitButtonProps {
   id: string;
@@ -10,7 +11,7 @@ interface DigitButtonProps {
 
 const DigitButton: React.FC<DigitButtonProps> = ({ id, digit, dispatch, styles }) => {
   return (
-    <button
+    <StyledButtons
       className={styles}
       id={id}
       onClick={() => dispatch({ type: ACTIONS.ADD_DIGIT, payload: { digit } })}
@@ -18,7 +19,7 @@ const DigitButton: React.FC<DigitButtonProps> = ({ id, digit, dispatch, styles }
       <div className="glass-block-btn"></div>
       <div className="glass-block-btn2"></div>
       {digit}
-    </button>
+    </StyledButtons>
   );
 };
 

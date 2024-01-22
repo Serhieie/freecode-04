@@ -1,13 +1,7 @@
 import { DisplayWrapper } from "./Display.styled";
+import { State } from "../../helpers/actionHandlers/actionHandlers.types";
 
-interface DisplayProps {
-  previousOperand: string;
-  currentOperand: string;
-  operation: string;
-  result: null;
-}
-
-const Display: React.FC<DisplayProps> = ({
+const Display: React.FC<State> = ({
   previousOperand,
   currentOperand,
   operation,
@@ -19,7 +13,7 @@ const Display: React.FC<DisplayProps> = ({
       <div className="glass-block2"></div>
       <div className="glass-block3"></div>
       <div className="prev-operand">
-        {currentOperand && currentOperand.length >= 14 ? (
+        {typeof currentOperand === "string" && currentOperand.length >= 14 ? (
           <p className="limit-msg">Digit limit met</p>
         ) : previousOperand && operation ? (
           `${previousOperand}${operation}`

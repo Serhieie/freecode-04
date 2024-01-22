@@ -1,6 +1,7 @@
 import React from "react";
 import DigitButton from "./DigitButton/DigitButton";
 import OperationDigit from "./OperationButton/OperationDigit";
+import { StyledButtons } from "./Buttons.styled";
 import { ACTIONS } from "../../constants/actions";
 
 interface ButtonsProps {
@@ -10,7 +11,7 @@ interface ButtonsProps {
 const Buttons: React.FC<ButtonsProps> = ({ dispatch }) => {
   return (
     <>
-      <button
+      <StyledButtons
         id="clear"
         onClick={() => dispatch({ type: ACTIONS.CLEAR })}
         className="span-two first-item"
@@ -18,16 +19,16 @@ const Buttons: React.FC<ButtonsProps> = ({ dispatch }) => {
         <div className="glass-block-btn"></div>
         <div className="glass-block-btn2"></div>
         AC
-      </button>
-      <button
+      </StyledButtons>
+      <StyledButtons
         id="delete"
-        onClick={() => dispatch({ type: ACTIONS.DELETE_DIG })}
+        onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}
         className="item del"
       >
         <div className="glass-block-btn2"></div>
         <div className="glass-block-btn"></div>
         DEL
-      </button>
+      </StyledButtons>
       <OperationDigit id="pow" operation="^" dispatch={dispatch} styles="item pow" />
       <OperationDigit
         id="percentage"
@@ -66,14 +67,14 @@ const Buttons: React.FC<ButtonsProps> = ({ dispatch }) => {
       />
       <DigitButton id="zero" digit="0" dispatch={dispatch} styles="item zero" />
       <DigitButton id="decimal" digit="." dispatch={dispatch} styles="item decimal" />
-      <button
+      <StyledButtons
         id="equals"
         onClick={() => dispatch({ type: ACTIONS.EVALUATE })}
         className="span-two last-item"
       >
         <div className="glass-block-btn2"></div>
         <div className="glass-block-btn "></div>=
-      </button>
+      </StyledButtons>
     </>
   );
 };

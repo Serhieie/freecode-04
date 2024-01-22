@@ -1,5 +1,6 @@
 import React from "react";
 import { ACTIONS } from "../../../constants/actions";
+import { StyledButtons } from "../Buttons.styled";
 
 interface OperationDigitProps {
   id: string;
@@ -15,7 +16,7 @@ const OperationDigit: React.FC<OperationDigitProps> = ({
   styles,
 }) => {
   return (
-    <button
+    <StyledButtons
       className={styles}
       id={id}
       onClick={() => dispatch({ type: ACTIONS.CHOOSE_OPERATION, payload: { operation } })}
@@ -23,7 +24,7 @@ const OperationDigit: React.FC<OperationDigitProps> = ({
       <div className="glass-block-btn"></div>
       <div className="glass-block-btn2"></div>
       {operation}
-    </button>
+    </StyledButtons>
   );
 };
 

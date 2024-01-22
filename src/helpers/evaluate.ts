@@ -1,29 +1,29 @@
 import { formatNumber } from "./formatNumber";
 
+type EvaluateTypes = {
+  previousOperand?: number | string | null;
+  currentOperand?: number | string | null;
+  operation?: string | null | boolean;
+  secondOperator?: boolean | null | string;
+};
+
 export function evaluate({
   currentOperand,
   previousOperand,
   operation,
   secondOperator,
-}: {
-  currentOperand: string;
-  previousOperand: string;
-  operation: string;
-  secondOperator: boolean;
-}): string | number {
-  const prev = parseFloat(previousOperand);
-  const curr = parseFloat(currentOperand);
-  let trueOp = operation;
+}: EvaluateTypes): string | number {
+  const prev = parseFloat(previousOperand as string) || 0;
+  const curr = parseFloat(currentOperand as string) || 0;
+  let trueOp: string | null = null;
+
+  if (typeof operation === "string") {
+    trueOp = operation.length > 1 ? operation.slice(0, 1) : operation;
+  }
 
   if (isNaN(curr)) return "";
 
   let compitation: string | number = "";
-
-  if (operation) {
-    if (operation.length > 1) {
-      trueOp = trueOp.slice(0, 1);
-    }
-  }
 
   switch (trueOp) {
     case "^":

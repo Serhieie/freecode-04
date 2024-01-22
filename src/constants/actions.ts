@@ -1,15 +1,15 @@
-interface ActionsTypes {
+interface ActionTypes {
   ADD_DIGIT: string;
   CHOOSE_OPERATION: string;
   CLEAR: string;
-  DELETE_DIG: string;
+  DELETE_DIGIT: string;
   EVALUATE: string;
 }
 
-export const ACTIONS: ActionsTypes = {
+export const ACTIONS: ActionTypes = {
   ADD_DIGIT: "add_digit",
   CHOOSE_OPERATION: "choose-operation",
   CLEAR: "clear",
-  DELETE_DIG: "delete_digit",
-  EVALUATE: "evaluet",
+  DELETE_DIGIT: "delete_digit",
+  EVALUATE: "evaluate",
 };
