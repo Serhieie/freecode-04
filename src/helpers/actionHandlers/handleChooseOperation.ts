@@ -99,6 +99,15 @@ export function handleChooseOperation(state: State, payload: Payload): State {
     return state;
   }
 
+  if (state.operation === "×-" && payload.operation === "+") {
+    return {
+      ...state,
+      previousOperand: state.previousOperand,
+      operation: `+`,
+      secondOperator: undefined,
+    };
+  }
+
   if (
     (state.operation === "+" &&
       state.currentOperand == null &&
