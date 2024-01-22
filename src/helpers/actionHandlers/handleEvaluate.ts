@@ -2,7 +2,6 @@ import { State } from "./actionHandlers.types";
 import { evaluate } from "../evaluate";
 
 export function handleEvaluate(state: State) {
-  console.log(state);
   if (state.previousOperand === Infinity || state.currentOperand === Infinity) {
     return {};
   }

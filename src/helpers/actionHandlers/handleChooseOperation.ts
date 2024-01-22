@@ -32,7 +32,7 @@ export function handleChooseOperation(state: State, payload: Payload): State {
       previousOperand: Number(state.result),
       result: null,
       operation: payload.operation,
-      currentOperand: 0,
+      currentOperand: null,
       overwrite: false,
     };
   }
@@ -102,6 +102,7 @@ export function handleChooseOperation(state: State, payload: Payload): State {
   if (state.operation === "×-" && payload.operation === "+") {
     return {
       ...state,
+      overwrite: true,
       previousOperand: state.previousOperand,
       operation: `+`,
       secondOperator: undefined,
@@ -141,7 +142,7 @@ export function handleChooseOperation(state: State, payload: Payload): State {
   if (!state.currentOperand && !state.previousOperand) {
     return state;
   }
-
+  console.log(state.currentOperand, state.previousOperand, payload.operation);
   return {
     ...state,
     previousOperand: Number(evaluate(state)),
