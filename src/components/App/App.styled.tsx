@@ -10,13 +10,13 @@ export const AppWrapper = styled.div`
     background-color: black;
     width: 21rem;
     display: grid;
-    grid-template-columns: repeat(32, 0.52rem);
-    grid-template-rows: minmax(7rem, auto) repeat(40, 0.58rem);
+    grid-template-columns: repeat(32, 0.57rem);
+    grid-template-rows: minmax(7rem, auto) repeat(40, 0.59rem);
     justify-content: center;
     margin: 0 auto;
     margin-top: 4rem;
     padding: 20px;
-    gap: 2px;
+    gap: 1px;
 
     border-radius: 10px;
     box-shadow: 12px 10px 40px rgba(10, 9, 7, 0.8);
